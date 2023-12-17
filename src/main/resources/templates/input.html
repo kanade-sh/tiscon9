@@ -38,7 +38,7 @@
           <label for="email">連絡先メールアドレス</label>
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
-        <div class="sub-title">集荷元・お届け先</div>
+        <div class="sub-title">配達情報</div>
         <div class="form-group">
           <label for="oldPrefectureId">集荷元住所（都道府県）</label>
           <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
@@ -61,7 +61,14 @@
           <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
                  value="札幌市南区1"/>
         </div>
+        <div class="form-group">
+          <label for="schedule">引っ越し予定時期</label>
+          <select id="schedule" name="schedule" class="form-control">
+            <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{newPrefectureId}">[[${prefecture.prefectureName}]]</option>
+          </select>
+        </div>
       </fieldset>
+
       <fieldset>
       <div class="sub-title">お荷物情報</div>
       <img src="../img/対応表.png" alt="段ボール　個数対応表"　width="150" height="180">

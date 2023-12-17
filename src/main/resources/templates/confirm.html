@@ -25,9 +25,16 @@
       入力内容をご確認ください。<br/>
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
+    <ul th:if="${#fields.hasErrors('all')}" class="error-list">
       <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
     </ul>
+    <style>
+      /* エラーメッセージリストの文字色を赤に変更 */
+      .error-list {
+          color: red;
+      }
+    </style>
+  
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
       <table class="table table-bordered">
@@ -37,7 +44,9 @@
         <tr>
           <th style="width: 40%">氏名</th>
           <td>
-            <span th:text="*{customerName}" />
+            <!-- <span th:text="*{customerName}" /> -->
+
+            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">氏名エラー</span>
           </td>
           <input type="hidden" name="customerName" id="customerName" th:value="*{customerName}"/>
         </tr>
