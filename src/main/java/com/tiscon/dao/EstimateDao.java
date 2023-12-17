@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -103,8 +104,62 @@ public class EstimateDao {
         double distance;
         try {
             distance = parameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(prefectureDistance), double.class);
+            System.out.println("TEST");
         } catch (IncorrectResultSizeDataAccessException e) {
-            distance = 0;
+            distance = 50;
+        }
+        //TODO: bugfixのため、一時的に対応。将来的には同一都道府県内のデータはDBで管理するようにする。
+        if(prefectureIdFrom.equals(prefectureIdTo)) {
+            HashMap<String, Integer> samePrefectureDistanceMap = new HashMap<>();
+            samePrefectureDistanceMap.put("01", 560);
+            samePrefectureDistanceMap.put("02", 205);
+            samePrefectureDistanceMap.put("03", 235);
+            samePrefectureDistanceMap.put("04", 165);
+            samePrefectureDistanceMap.put("05", 205);
+            samePrefectureDistanceMap.put("06", 195);
+            samePrefectureDistanceMap.put("07", 225);
+            samePrefectureDistanceMap.put("08", 135);
+            samePrefectureDistanceMap.put("09", 125);
+            samePrefectureDistanceMap.put("10", 125);
+            samePrefectureDistanceMap.put("11", 90);
+            samePrefectureDistanceMap.put("12", 100);
+            samePrefectureDistanceMap.put("13", 50);
+            samePrefectureDistanceMap.put("14", 60);
+            samePrefectureDistanceMap.put("15", 175);
+            samePrefectureDistanceMap.put("16", 90);
+            samePrefectureDistanceMap.put("17", 110);
+            samePrefectureDistanceMap.put("18", 90);
+            samePrefectureDistanceMap.put("19", 80);
+            samePrefectureDistanceMap.put("20", 195);
+            samePrefectureDistanceMap.put("21", 135);
+            samePrefectureDistanceMap.put("22", 135);
+            samePrefectureDistanceMap.put("23", 125);
+            samePrefectureDistanceMap.put("24", 125);
+            samePrefectureDistanceMap.put("25", 80);
+            samePrefectureDistanceMap.put("26", 70);
+            samePrefectureDistanceMap.put("27", 60);
+            samePrefectureDistanceMap.put("28", 80);
+            samePrefectureDistanceMap.put("29", 50);
+            samePrefectureDistanceMap.put("30", 70);
+            samePrefectureDistanceMap.put("31", 70);
+            samePrefectureDistanceMap.put("32", 80);
+            samePrefectureDistanceMap.put("33", 90);
+            samePrefectureDistanceMap.put("34", 135);
+            samePrefectureDistanceMap.put("35", 90);
+            samePrefectureDistanceMap.put("36", 60);
+            samePrefectureDistanceMap.put("37", 60);
+            samePrefectureDistanceMap.put("38", 80);
+            samePrefectureDistanceMap.put("39", 90);
+            samePrefectureDistanceMap.put("40", 100);
+            samePrefectureDistanceMap.put("41", 70);
+            samePrefectureDistanceMap.put("42", 100);
+            samePrefectureDistanceMap.put("43", 100);
+            samePrefectureDistanceMap.put("44", 90);
+            samePrefectureDistanceMap.put("45", 100);
+            samePrefectureDistanceMap.put("46", 110);
+            samePrefectureDistanceMap.put("47", 165);
+
+            distance = samePrefectureDistanceMap.get(prefectureIdFrom);
         }
         return distance;
     }
