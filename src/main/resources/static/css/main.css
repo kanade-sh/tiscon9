@@ -26,6 +26,8 @@ body {
     line-height: 28px;
     font-family: Roboto;
     text-align: center;
+
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4); /* 影をつける */
 }
 
 .btn-back {
@@ -72,12 +74,28 @@ body {
     font-family: "Roboto";
 }
 
+.concept {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 220px;
+    color: #2EA9BC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 60px;
+    font-family: "Roboto";
+    border: 5px solid #2EA9BC; 
+    border-radius: 20px; 
+}
+
+
 .page-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 32px;
-    color: #313131;
+    margin: 5px;
+    color: #615f5f;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
@@ -96,22 +114,38 @@ body {
 }
 
 .box-text {
+    color: white;
     display:inline-block;
     width: 250px;
     margin: 2rem;
     padding: 1.5rem;
     border-radius: 16px;
-    color: #313131;
+    /* color: #313131; */
     font-family: "Roboto";
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 28px;
-    outline: 0.5rem solid #313131;
-    outline-offset: 0.5rem;
+    outline: 0.5rem solid #615f5f;
+    background-color:#615f5f;
+    /* outline-offset: 0.5rem; */
     outline-width: 5px;
 }
 
+.arrow {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 30px;
+    border-color: transparent transparent transparent #615f5f;
+    margin: 0 1rem;
+}
+
+.box-text:not(:last-child) {
+    margin-right: 40px; /* ボックス間のスペースを調整 */
+}
 .ui.main.container {
     padding-top: 80px;
 }
