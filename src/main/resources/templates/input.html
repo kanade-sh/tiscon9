@@ -20,9 +20,9 @@
     <div class="page-title">
       お見積り情報入力
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
+     <ul th:if="${#fields.hasErrors('all')}"> 
+       <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li> 
+     </ul> 
     <div class="col-sm-12">
       <fieldset>
         <div class="sub-title">お客様情報</div>
@@ -62,9 +62,9 @@
                  value="札幌市南区1"/>
         </div>
         <div class="form-group">
-          <label for="schedule">引っ越し予定時期</label>
-          <select id="schedule" name="schedule" class="form-control">
-            <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{newPrefectureId}">[[${prefecture.prefectureName}]]</option>
+          <label for="scheduleId"> 引っ越し予定時期 </label>
+          <select id="scheduleId" name="scheduleId" class="form-control">
+            <option th:each="schedule : ${schedules}" th:value="${schedule.scheduleId}" th:field="*{scheduleId}">[[${schedule.scheduleValue}]]</option>
           </select>
         </div>
       </fieldset>

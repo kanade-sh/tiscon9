@@ -1,9 +1,15 @@
 package com.tiscon.controller;
 
 import com.tiscon.dao.EstimateDao;
+import com.tiscon.domain.Prefecture;
+import com.tiscon.domain.Schedule;
 import com.tiscon.dto.UserOrderDto;
 import com.tiscon.form.UserOrderForm;
 import com.tiscon.service.EstimateService;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +57,24 @@ public class EstimateController {
         if (!model.containsAttribute("userOrderForm")) {
             model.addAttribute("userOrderForm", new UserOrderForm());
         }
+        List<Schedule> scheduleList = new ArrayList() ;
+        
+        Schedule  schedule01 = new Schedule();
+        schedule01.setScheduleId("01") ;
+        schedule01.setScheduleValue("3月または4月") ;
+        scheduleList.add(schedule01) ;
+
+        Schedule  schedule02 = new Schedule();
+        schedule02.setScheduleId("02") ;
+        schedule02.setScheduleValue("9月") ;
+        scheduleList.add(schedule02) ;
+
+        Schedule  schedule03 = new Schedule();
+        schedule03.setScheduleId("03") ;
+        schedule03.setScheduleValue("その他") ;
+        scheduleList.add(schedule03) ;
+
+        model.addAttribute("schedules", scheduleList);
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         return "input";
@@ -78,6 +102,24 @@ public class EstimateController {
     String confirm(UserOrderForm userOrderForm, Model model) {
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
+        List<Schedule> scheduleList = new ArrayList() ;
+        
+        Schedule  schedule01 = new Schedule();
+        schedule01.setScheduleId("01") ;
+        schedule01.setScheduleValue("3月または4月") ;
+        scheduleList.add(schedule01) ;
+
+        Schedule  schedule02 = new Schedule();
+        schedule02.setScheduleId("02") ;
+        schedule02.setScheduleValue("9月") ;
+        scheduleList.add(schedule02) ;
+
+        Schedule  schedule03 = new Schedule();
+        schedule03.setScheduleId("03") ;
+        schedule03.setScheduleValue("その他") ;
+        scheduleList.add(schedule03) ;
+
+        model.addAttribute("schedules", scheduleList);
         model.addAttribute("userOrderForm", userOrderForm);
         return "confirm";
     }
@@ -92,6 +134,25 @@ public class EstimateController {
     @PostMapping(value = "result", params = "backToInput")
     String backToInput(UserOrderForm userOrderForm, Model model) {
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
+        List<Prefecture> list;
+        List<Schedule> scheduleList = new ArrayList() ;
+        
+        Schedule  schedule01 = new Schedule();
+        schedule01.setScheduleId("01") ;
+        schedule01.setScheduleValue("3月または4月") ;
+        scheduleList.add(schedule01) ;
+
+        Schedule  schedule02 = new Schedule();
+        schedule02.setScheduleId("02") ;
+        schedule02.setScheduleValue("9月") ;
+        scheduleList.add(schedule02) ;
+
+        Schedule  schedule03 = new Schedule();
+        schedule03.setScheduleId("03") ;
+        schedule03.setScheduleValue("その他") ;
+        scheduleList.add(schedule03) ;
+
+        model.addAttribute("schedules", scheduleList);
         model.addAttribute("userOrderForm", userOrderForm);
         return "input";
     }

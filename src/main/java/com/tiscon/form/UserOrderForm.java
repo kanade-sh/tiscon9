@@ -34,6 +34,9 @@ public class UserOrderForm {
     private String newPrefectureId;
 
     @NotBlank
+    private String scheduleId;
+
+    @NotBlank
     private String newAddress;
 
     @Numeric
@@ -101,6 +104,14 @@ public class UserOrderForm {
 
     public void setNewPrefectureId(String newPrefectureId) {
         this.newPrefectureId = newPrefectureId;
+    }
+
+    public String getScheduleId() {
+        return scheduleId;
+    }
+
+    public void setScheduleId(String scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
     public String getNewAddress() {

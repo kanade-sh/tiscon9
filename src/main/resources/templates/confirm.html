@@ -25,9 +25,9 @@
       入力内容をご確認ください。<br/>
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
+    <ul th:if="${#fields.hasErrors('all')}"> 
+      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li> 
+    </ul> 
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
       <table class="table table-bordered">
@@ -83,6 +83,13 @@
           <th>お届け先住所（市区町村以下）</th>
           <td><span th:text="*{newAddress}"></span></td>
           <input type="hidden" name="newAddress" id="newAddress" th:value="*{newAddress}"/>
+        </tr>
+        <tr>
+          <th>引っ越し予定時期</th>
+          <td>
+            <span th:each="schedule : ${schedules}" th:text="${schedule.scheduleValue}" th:if="${schedule.scheduleId}==*{scheduleId}">大阪</span>
+          </td>
+          <input type="hidden" name="scheduleId" id="scheduleId" th:value="*{scheduleId}"/>
         </tr>
         </tbody>
       </table>
