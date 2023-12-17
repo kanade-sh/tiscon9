@@ -108,7 +108,24 @@ public class EstimateController {
 
     @PostMapping(value = "submit", params = "confirm")
     String confirm(UserOrderForm userOrderForm, Model model) {
+        List<Schedule> scheduleList = new ArrayList() ;
+        
+        Schedule  schedule01 = new Schedule();
+        schedule01.setScheduleId("01") ;
+        schedule01.setScheduleValue("3月または4月") ;
+        scheduleList.add(schedule01) ;
 
+        Schedule  schedule02 = new Schedule();
+        schedule02.setScheduleId("02") ;
+        schedule02.setScheduleValue("9月") ;
+        scheduleList.add(schedule02) ;
+
+        Schedule  schedule03 = new Schedule();
+        schedule03.setScheduleId("03") ;
+        schedule03.setScheduleValue("その他") ;
+        scheduleList.add(schedule03) ;
+
+        model.addAttribute("schedules", scheduleList);
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
         return "confirm";
