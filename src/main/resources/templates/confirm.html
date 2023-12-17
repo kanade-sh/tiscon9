@@ -25,12 +25,19 @@
       入力内容をご確認ください。<br/>
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
-    <ul th:if="${#fields.hasErrors('all')}" class="error-list">
+    <!-- <ul th:if="${#fields.hasErrors('all')}" class="error-list">
       <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
     </ul>
     <style>
       /* エラーメッセージリストの文字色を赤に変更 */
       .error-list {
+          color: red;
+      }
+    </style> -->
+
+    <style>
+      /* エラーメッセージリストの文字色を赤に変更 */
+      .error-message {
           color: red;
       }
     </style>
@@ -44,20 +51,27 @@
         <tr>
           <th style="width: 40%">氏名</th>
           <td>
-            <!-- <span th:text="*{customerName}" /> -->
-
-            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">氏名エラー</span>
+            <span th:text="*{customerName}" />
+            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="error-message">氏名エラー</span>
           </td>
           <input type="hidden" name="customerName" id="customerName" th:value="*{customerName}"/>
         </tr>
         <tr>
           <th>連絡先TEL</th>
-          <td><span th:text="*{tel}"></span></td>
+          <td>
+            <span th:text="*{tel}" />
+            <span th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="error-message">連絡先エラー</span>
+          </td>
+          <!-- <td><span th:text="*{tel}"></span></td> -->
           <input type="hidden" name="tel" id="tel" th:value="*{tel}"/>
         </tr>
         <tr>
           <th>連絡先メールアドレス</th>
-          <td><span th:text="*{email}"></span></td>
+          <td>
+            <span th:text="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message">連絡先エラー</span>
+          </td>
+          <!-- <td><span th:text="*{email}"></span></td> -->
           <input type="hidden" name="email" id="email" th:value="*{email}"/>
         </tr>
       </tbody>
@@ -78,7 +92,11 @@
         </tr>
         <tr>
           <th>集荷元住所（市区町村以下）</th>
-          <td><span th:text="*{oldAddress}"></span></td>
+          <td>
+            <span th:text="*{oldAddress}" />
+            <span th:if="${#fields.hasErrors('oldAddress')}" th:errors="*{oldAddress}" class="error-message">旧住所エラー</span>
+          </td>
+          <!-- <td><span th:text="*{oldAddress}"></span></td> -->
           <input type="hidden" name="oldAddress" id="oldAddress" th:value="*{oldAddress}"/>
         </tr>
         <tr>
@@ -90,7 +108,11 @@
         </tr>
         <tr>
           <th>お届け先住所（市区町村以下）</th>
-          <td><span th:text="*{newAddress}"></span></td>
+          <td>
+            <span th:text="*{newAddress}" />
+            <span th:if="${#fields.hasErrors('newAddress')}" th:errors="*{newAddress}" class="error-message">新住所エラー</span>
+          </td>
+          <!-- <td><span th:text="*{newAddress}"></span></td> -->
           <input type="hidden" name="newAddress" id="newAddress" th:value="*{newAddress}"/>
         </tr>
         </tbody>
@@ -104,7 +126,11 @@
           <tbody>
           <tr>
             <th style="width: 40%">段ボールの個数</th>
-            <td><span th:text="*{box}"></span></td>
+            <td>
+              <span th:text="*{box}" />
+              <span th:if="${#fields.hasErrors('box')}" th:errors="*{box}" class="error-message">1~100以内で入力してください</span>
+            </td>
+            <!-- <td><span th:text="*{box}"></span></td> -->
             <input type="hidden" name="box" id="box" th:value="*{box}"/>
           </tr>
           <tr>
